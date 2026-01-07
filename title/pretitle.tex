@@ -1,0 +1,64 @@
+\NewDocumentCommand\IsLangRU{m}{\LuaBool{titleconf.is_lang_ru('#1')}}
+\NewDocumentCommand\IsThesis{}{\LuaBool{titleconf.is_thesis}}
+\NewDocumentCommand\IsReport{}{\LuaBool{titleconf.is_report}}
+
+\NewDocumentCommand\IsFieldGiven{mm}{\LuaBool{titleconf.is_field_given('#1.#2')}}
+\NewDocumentCommand\TypesetField{mm}{\directlua{tex.sprint(titleconf.typeset('#1.#2'))}}
+
+\NewDocumentCommand\TypesetScientificSupervisor{m}{
+  \IfBoolFlagTF{\IsLangRU{#1}}{Научный руководитель}{Scientific supervisor}:\\
+  \TypesetField{supervisor.position}{#1}\ \TypesetField{supervisor.name}{#1}\\
+}
+
+\NewDocumentCommand\TypesetConsultant{m}{
+  \IfBoolFlagTF{\IsLangRU{#1}}{Консультант}{Consultant}:\\
+  \TypesetField{consultant.position}{#1}\ \TypesetField{consultant.name}{#1}\\
+}
+
+\NewDocumentCommand\TypesetReviewer{m}{
+  \IfBoolFlagTF{\IsLangRU{#1}}{Рецензент}{Reviewer}:\\
+  \TypesetField{reviewer.position}{#1}\ \TypesetField{reviewer.name}{#1}\\
+}
+
+%% Report
+\NewDocumentCommand\TypesetReportType{m}{
+  \TypesetField{report.type.repr}{#1}
+}
+
+\NewDocumentCommand\TypesetReportKind{m}{
+  \TypesetField{report.kind.repr}{#1}
+}
+
+\fancypagestyle{entitle}{
+	\fancyhf{}  % clear all header and footer fields
+	\renewcommand{\headrulewidth}{0pt}  % remove head ruler
+	% В верхнем колонтитуле будет университет, кафедра и группа, если это курсовая/практика, или просто университет для ВКР
+	\chead{\large
+		Saint Petersburg State University
+		\vskip 1em
+		\IfBoolFlagF{\IsThesis}{
+		  {\large \TypesetField{supervisor.chair}{en}}
+			\vskip 1em
+				{\large Group \TypesetField{author.group}{en}}
+		}
+	}
+	% В нижнем колонтитуле город и год
+	\cfoot{\large\parbox[b]{\textwidth}{\centering Saint-Petersburg\\ \TypesetField{year}{en}}}
+}
+
+\fancypagestyle{rutitle}{
+	\fancyhf{}  % clear all header and footer fields
+	\renewcommand{\headrulewidth}{0pt}  % remove head ruler
+	% В верхнем колонтитуле будет университет, кафедра и группа, если это курсовая/практика, или просто университет для ВКР
+	\chead{\large
+		Санкт-Петербургский государственный университет
+		\vskip 1em
+		\IfBoolFlagF{\IsThesis}{
+		  {\large \TypesetField{supervisor.chair}{ru}}
+			\vskip 1em
+				{\large Группа \TypesetField{author.group}{ru}}
+		}
+	}
+	% В нижнем колонтитуле город и год
+	\cfoot{\large\parbox[b]{\textwidth}{\centering Санкт-Петербург\\ \TypesetField{year}{ru}}}
+}
