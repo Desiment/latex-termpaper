@@ -1,0 +1,6 @@
+ensure_path( 'TEXINPUTS', './title//' );
+ensure_path( 'LUAINPUTS', './title//' );
+$pdf_mode=4;
+$lualatex = 'lualatex  %O -halt-on-error -synctex=1 --shell-escape %S';
+$out_dir = '.';
+$aux_dir = 'build';

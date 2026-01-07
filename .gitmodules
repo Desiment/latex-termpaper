@@ -1,0 +1,6 @@
+[submodule "deps/luaboolean"]
+	path = deps/luaboolean
+	url = https://github.com/Desiment/latex-luaboolean.git
+[submodule "deps/fontswitch"]
+	path = deps/fontswitch
+	url = https://github.com/Desiment/latex-fontswitch.git
