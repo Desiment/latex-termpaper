@@ -2,6 +2,22 @@
 \ProvidesClass{termpaper}[2026/01/06 MatMex LaTeX Term Paper Class]
 
 % ============================================================================
+% REQUIRE LuaLaTeX
+% ============================================================================
+\RequirePackage{iftex}
+\ifLuaTeX
+\else
+    \newlinechar 64\relax
+    \errorcontextlines -1\relax
+    \immediate\write20{@
+        ************************************************@
+        * LuaLaTeX is required to compile this document.@
+        * Sorry!@
+        ************************************************}%
+    \batchmode\read -1 to \@tempa
+\fi
+
+% ============================================================================
 % DEFAULT CONFIGURATION
 % ============================================================================
 \def\termpaper@fontsize{12pt}       % Default font size
@@ -71,14 +87,17 @@
 \setotherlanguage{english}
 
 % Smart quotes based on current language
+\RequirePackage{lineno}
 \RequirePackage[autostyle]{csquotes}
 
 % ============================================================================
-% PAGE LAYOUT
+% PAGE LAYOUT AND TYPOGRAPHY
 % ============================================================================
 \RequirePackage[a4paper]{geometry}  % Page dimensions and margins
 \RequirePackage{fancyhdr}           % Header/footer customization
 \RequirePackage{setspace}           % Line spacing control
+\RequirePackage{microtype}          % Microtypography features
+\setdisplayskipstretch{1.0}  % Control spacing around displayed math
 
 % ============================================================================
 % TITLE CONFIGURATION LOADING
@@ -92,7 +111,3 @@
 % ============================================================================
 \input{title/base.tex}
 
-% ============================================================================
-% TYPOGRAPHIC ADJUSTMENTS
-% ============================================================================
-\setdisplayskipstretch{1.0}  % Control spacing around displayed math
