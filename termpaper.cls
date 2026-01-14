@@ -128,6 +128,7 @@
 \RequirePackage{tocloft}     % Пакет для настройки содержания
 \RequirePackage{titlesec}    % Пакет для настройки заголовков разделов
 \RequirePackage{fancyhdr}    % Настройка колонтитулов 
+\RequirePackage{enumitem}    % Настройка списков
 \RequirePackage{microtype}   % Микротипография
 \setdisplayskipstretch{1.0}  % Отступы вокруг выключных формул
 
@@ -184,7 +185,6 @@
   \newlength\cftsecpresnumlength
   \settowidth\cftsecpresnumlength{\cftsecpresnum}
   \addtolength\cftsecnumwidth{\cftsecpresnumlength}
-  
   % Строки с точками
   \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
   % Точки после цифр в в содержании
@@ -233,7 +233,7 @@
 	  partopsep=\parskip,
 	  listparindent=1.5em,
 	  parsep=\parskip,
-	  leftmargin=\parindent,
+	  leftmargin=2\parindent,
 	  itemindent=0mm,
 	  labelsep=2mm,
 	  label=--
@@ -245,7 +245,7 @@
 	  partopsep=\parskip,
 	  listparindent=1.5em,
 	  parsep=\parskip,
-	  leftmargin=\parindent,
+	  leftmargin=2\parindent,
 	  itemindent=0mm,
 	  labelsep=2mm,
 	  label=\arabic*)
