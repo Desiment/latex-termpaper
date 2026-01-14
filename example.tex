@@ -1,9 +1,9 @@
-\documentclass[14pt, russian]{termpaper}
+\documentclass[14pt, gost]{termpaper}
+
+\usepackage{lipsum}
 
 \begin{document}
 \maketitle
-\setcounter{tocdepth}{2}
-\tableofcontents
 
 \pagebreak
 \newfontfamily\myfont{CMU Sans Serif}
@@ -20,7 +20,27 @@
 \end{center}
 \pagebreak
 
+\setcounter{tocdepth}{2}
+\tableofcontents
 
-\setmonofont{CMU Typewriter Text}
+\specialsection{Введение}
+\lipsum[1-5]
+\specialsection{Постановка задачи}
+\lipsum[1]
+
+\specialsection{Обзор}
+\lipsum[1-5]
+\specialsubsection{Обзор чего-то там}
+\lipsum[1-5]
+\section{Задача I}
+\lipsum[1]
+\subsection{Результат 1}
+\lipsum[1-5]
+\subsection{Результат 2}
+\lipsum[1-5]
+\section{Задача II}
+\lipsum[1-5]
+\specialsection{Заключение}
+\lipsum[1]
 
 \end{document}

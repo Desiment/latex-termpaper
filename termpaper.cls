@@ -75,40 +75,24 @@
   % Keep title in 12pt font
   \RenewDocumentCommand\SetupTitlePage{}{%
 	\SetPageFontSize{12}%
-<<<<<<< HEAD
 	\SetupTitlePageGeometry
-=======
-	\SetTitlePageGeometry
->>>>>>> e8c0654 (feat: add gost option)
   }%
   % Body text uses requested 14pt font
   \RenewDocumentCommand\SetupBodyPage{}{%
 	\SetPageFontSize{14}%
-<<<<<<< HEAD
 	\SetupBodyPageGeometry
-=======
-	\SetBodyPageGeometry
->>>>>>> e8c0654 (feat: add gost option)
   }%
 \fi
 
 \if@termpaper@gost
-<<<<<<< HEAD
   \RenewDocumentCommand\SetupBodyPageGeometry{}{%
-=======
-  \RenewDocumentCommand\SetBodyPageGeometry{}{%
->>>>>>> e8c0654 (feat: add gost option)
 	\newgeometry{top=20mm,bottom=20mm,left=30mm,right=15mm,nohead,includeheadfoot,footskip=35pt}%
   }
   % Title already redefined correctly due to extfont bool
   % Body text should adopt a few things still
   \RenewDocumentCommand\SetupBodyPage{}{%
 	\SetPageFontSize{14}%
-<<<<<<< HEAD
 	\SetupBodyPageGeometry
-=======
-	\SetBodyPageGeometry
->>>>>>> e8c0654 (feat: add gost option)
     % Межстрочный интервал = 1.5pt
 	\onehalfspacing
 	% Абзацный отступ = 1.25см
@@ -155,32 +139,35 @@
   % Размеры заголовков разделов и подразделов
   % Раздел: 18pt, добавляем слово "Глава"
   \titleformat{\section}%
-  {\fontsize{18}{18}\bfseries}{\hspace{-1.5mm}Глава \thesection. \hskip-1em}{1em}{}
+  {\fontsize{18}{18}\bfseries}{\hspace{-1.5mm}Глава \thesection. }{0em}{}
   % Подраздел: 16pt
   \titleformat{\subsection}%
-  {\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsection}{1em}{}
+  {\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsection. }{0em}{}
   % Команды для специальных разделов (введение, обзор литературы, etc)
   % Не нумеруются в содержании, по уровню вложенности
-  \NewDocumentCommand{\specialsection}{om}{%
-	  \phantomsection%
-	  \vspace{3.5ex plus 1ex minus .2ex}\hspace{-13.8mm}%
-	  \normalfont\fontsize{18}{18}\textbf{#2}\\[0pt]%
-	  \vspace{2.3ex plus .2ex}%
-	  \normalfont\normalsize%
+  \NewDocumentCommand{\specialsection}{om}{
+	  \clearpage
+	  \vspace{3.5ex plus 1ex minus .2ex}
+
+	  \phantomsection
+	  \hspace{-13.8mm}\normalfont\fontsize{18}{18}\textbf{#2}\par
+	  \vspace{2.3ex plus .2ex}
+	  \normalfont\normalsize
 	  \IfNoValueTF{#1}{%
 		\addcontentsline{toc}{section}{#2}%
 	  }{%
 		\addcontentsline{toc}{section}{#1}%
 	  }%
   }
-  \NewDocumentCommand{\specialsubsection}{om}{%
-	  \phantomsection%
-	  \vspace{3.25ex plus 1ex minus .2ex}\hspace{-12.5mm}%
-	  \normalfont\fontsize{18}{18}\textbf{#1}\\[0pt]%
-	  \vspace{1.5ex plus .2ex}%
-	  \normalfont\normalsize%
+  \NewDocumentCommand{\specialsubsection}{om}{
+	  \vspace{3.25ex plus 1ex minus .2ex}
+	  
+	  \phantomsection
+	  \hspace{-12.5mm}\normalfont\fontsize{16}{16}\textbf{#2}\par
+	  \vspace{1.5ex plus .2ex}
+	  \normalfont\normalsize
 	  \IfNoValueTF{#1}{%
-		\addcontentsline{toc}{subsection}{#2}%
+		\addcontentsline{toc}{subsection}{\hspace{-1pt}#2}%
 	  }{%
 		\addcontentsline{toc}{subsection}{#1}%
 	  }%
