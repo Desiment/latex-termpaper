@@ -111,7 +111,7 @@
 %\setmonofont{Inconsolata}
 
 % Русский язык
-\RequirePackage{polyglossia}
+\RequirePackage[babelshorthands]{polyglossia}
 \setmainlanguage{russian}
 \setotherlanguage{english}
 
@@ -200,8 +200,56 @@
   %%%%%%%%%%%%%%
   %   Списки   %
   %%%%%%%%%%%%%%
-  %\setlist[MList]{before=\par}
-  %\setlist[NList]{before=\par}
+  \AddEnumerateCounter{\asbuk}{\russian@asbuk@alph}{щ}
+  % Для первого уровня списков (уровень 1)
+  \setlist[itemize,1]{
+	  itemsep=.5\parskip,
+	  topsep=0mm,
+	  partopsep=0mm,
+	  listparindent=\parindent,
+	  parsep=\parskip,
+	  leftmargin=0mm,
+	  itemindent=\parindent,
+	  labelsep=2mm,
+	  label=\textendash
+  }
+
+  \setlist[enumerate,1]{
+	  itemsep=.5\parskip,
+	  topsep=0mm,
+	  partopsep=0mm,
+	  listparindent=\parindent,
+	  parsep=\parskip,
+	  leftmargin=0mm,
+	  itemindent=\parindent,
+	  labelsep=2mm,
+	  label=\asbuk*)
+  }
+
+  % Для второго уровня списков (уровень 2)
+  \setlist[itemize,2]{
+	  itemsep=.5\parskip,
+	  topsep=0mm,
+	  partopsep=\parskip,
+	  listparindent=1.5em,
+	  parsep=\parskip,
+	  leftmargin=\parindent,
+	  itemindent=0mm,
+	  labelsep=2mm,
+	  label=--
+  }
+
+  \setlist[enumerate,2]{
+	  itemsep=.5\parskip,
+	  topsep=0mm,
+	  partopsep=\parskip,
+	  listparindent=1.5em,
+	  parsep=\parskip,
+	  leftmargin=\parindent,
+	  itemindent=0mm,
+	  labelsep=2mm,
+	  label=\arabic*)
+  }
 \fi
 
 \ProvideDocumentCommand{\specialsection}{om}{
