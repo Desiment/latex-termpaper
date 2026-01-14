@@ -55,7 +55,7 @@ records.supervisor.name = {
 
 records.supervisor.position = {
     ru = [[доцент кафедры системного программирования, к.~ф.-м.~н.]],
-    en = [[C.Sc., docent]]
+    en = [[C.Sc., Associate professor]]
 }
 
 records.supervisor.chair = {
