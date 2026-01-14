@@ -28,6 +28,18 @@
 \specialsection{Постановка задачи}
 \lipsum[1]
 
+\begin{enumerate}
+    \item \lipsum[5][1-2] % Первый пункт
+    \item \lipsum[5][3-4] % Второй пункт
+    \item \lipsum[6][1-2] % Третий пункт
+    \begin{enumerate}
+        \item \lipsum[7][1] % Вложенный нумерованный список второго уровня
+        \item \lipsum[7][2] % Еще один пункт второго уровня
+        \item \lipsum[7][3] % Последний пункт второго уровня
+    \end{enumerate}
+    \item \lipsum[6][3-4] % Четвертый пункт первого уровня
+\end{enumerate}
+
 \specialsection{Обзор}
 \lipsum[1-5]
 \specialsubsection{Обзор чего-то там}
@@ -42,5 +54,14 @@
 \lipsum[1-5]
 \specialsection{Заключение}
 \lipsum[1]
+
+\begin{itemize}
+    \item \lipsum[9][1-2] % Маркированный пункт
+    \begin{enumerate}
+        \item \lipsum[10][1] % Нумерованный вложенный
+        \item \lipsum[10][3] % Последний нумерованный
+    \end{enumerate}
+    \item \lipsum[9][3-4] % Последний маркированный
+\end{itemize}
 
 \end{document}
